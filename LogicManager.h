@@ -16,7 +16,7 @@ private:
 
 public:
     LogicManager();
-    void processSpatialData(const std::vector<dai::SpatialLocation>& spatialData, int frameWidth, int frameHeight);
+    void processSpatialData(const std::vector<dai::SpatialLocations>& spatialData, int frameWidth, int frameHeight);
     std::string decideAction() const;
 };
 

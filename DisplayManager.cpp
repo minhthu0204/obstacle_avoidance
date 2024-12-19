@@ -1,7 +1,8 @@
 #include "DisplayManager.h"
 
 DisplayManager::DisplayManager()
-    : device(pipelineManager.getPipeline()) {
+    : device(pipelineManager.getPipeline()),
+    webSocketClient(QUrl("ws://192.168.1.100:3335")){
     device.setIrLaserDotProjectorBrightness(1000);
 
     depthQueue = device.getOutputQueue("depth", 4, false);
@@ -24,14 +25,14 @@ void DisplayManager::processFrame() {
 
     // Display action decision
     auto action = logicManager.decideAction();
-    std::cout << "Action: " << action << std::endl;
+    //std::cout << "Action: " << action << std::endl;
     QByteArray dataBuffer = action.toUtf8();
-    webSocketClient.sendMessage(dataBuffer);
+    //webSocketClient.sendMessage(dataBuffer);
     // Show the frame
     cv::imshow("depth", depthFrameColor);
 }
 
-void DisplayManager::drawROIs(cv::Mat& frame, const std::vector<dai::SpatialLocation>& spatialData) {
+void DisplayManager::drawROIs(cv::Mat& frame, const std::vector<dai::SpatialLocations>& spatialData) {
     for (const auto& data : spatialData) {
         auto roi = data.config.roi.denormalize(frame.cols, frame.rows);
         auto coords = data.spatialCoordinates;
@@ -48,6 +49,7 @@ void DisplayManager::drawROIs(cv::Mat& frame, const std::vector<dai::SpatialLoca
 }
 
 void DisplayManager::run() {
+    webSocketClient.connectToServer();
     while (true) {
         processFrame();
         if (cv::waitKey(1) == 'q') break;

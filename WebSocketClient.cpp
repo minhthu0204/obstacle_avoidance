@@ -33,7 +33,7 @@ void WebSocketClient::onConnected()
 {
     qDebug() << "Connected to WebSocket server:" << m_url;
     // Example message send
-    sendMessage("data");
+    //sendMessage("data");
 }
 
 void WebSocketClient::onDisconnected()

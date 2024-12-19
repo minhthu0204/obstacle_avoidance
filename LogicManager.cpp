@@ -13,7 +13,7 @@ void LogicManager::resetGrid() {
     }
 }
 
-void LogicManager::processSpatialData(const std::vector<dai::SpatialLocation>& spatialData, int frameWidth, int frameHeight) {
+void LogicManager::processSpatialData(const std::vector<dai::SpatialLocations>& spatialData, int frameWidth, int frameHeight) {
     resetGrid();
     for (const auto& data : spatialData) {
         auto coords = data.spatialCoordinates;

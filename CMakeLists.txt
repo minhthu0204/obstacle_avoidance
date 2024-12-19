@@ -19,7 +19,7 @@ find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Core WebSockets)
 find_package(OpenCV REQUIRED)
 
 # Tìm kiếm thư viện DepthAI (Cập nhật đường dẫn cài đặt nếu cần thiết)
-find_package(depthai CONFIG REQUIRED PATHS /home/phulinh/depthai-core/build/install/lib/cmake/depthai)
+find_package(depthai CONFIG REQUIRED PATHS /home/xb/depthai-core/build/install/lib/cmake/depthai)
 
 add_executable(obstacle_avoidance
   main.cpp

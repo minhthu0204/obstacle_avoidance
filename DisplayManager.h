@@ -17,7 +17,7 @@ private:
     std::shared_ptr<dai::DataOutputQueue> spatialCalcQueue;
 
     void processFrame();
-    void drawROIs(cv::Mat& frame, const std::vector<dai::SpatialLocation>& spatialData);
+    void drawROIs(cv::Mat& frame, const std::vector<dai::SpatialLocations>& spatialData);
 
 public:
     DisplayManager();
