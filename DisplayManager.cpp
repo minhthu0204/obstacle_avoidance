@@ -27,7 +27,7 @@ void DisplayManager::processFrame() {
     auto action = logicManager.decideAction();
     //std::cout << "Action: " << action << std::endl;
     QByteArray dataBuffer = QString::fromStdString(action).toUtf8();
-    //webSocketClient.sendMessage(dataBuffer);
+    webSocketClient.sendMessage(dataBuffer);
     // Show the frame
     cv::imshow("depth", depthFrameColor);
 }
