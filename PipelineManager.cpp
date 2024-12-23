@@ -48,7 +48,7 @@ void PipelineManager::configureNodes(){
             dai::SpatialLocationCalculatorConfigData config;
             config.depthThresholds.lowerThreshold = 200;
             config.depthThresholds.upperThreshold = 30000;
-            config.calculationAlgorithm = dai::SpatialLocationCalculatorAlgorithm::MIN;
+            config.calculationAlgorithm = dai::SpatialLocationCalculatorAlgorithm::MEDIAN;
             config.roi = dai::Rect(
                 dai::Point2f(i * 0.2f, j * 0.2f),
                 dai::Point2f((i + 1) * 0.2f, (j + 1) * 0.2f)
