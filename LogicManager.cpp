@@ -64,6 +64,7 @@ std::string LogicManager::decideAction() const {
     //if (bottomDanger > 0 && topSafe == 0) return "787001;0.2";
 
     if (centerSum == 0) return "787003;0.5";
+    else return "787001;0.2";
 
-    return "787001;0.2";
+    //return "787001;0.2";
 }
