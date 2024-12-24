@@ -2,7 +2,7 @@
 
 DisplayManager::DisplayManager()
     : device(pipelineManager.getPipeline()),
-    webSocketClient(QUrl("ws://192.168.1.100:3335")){
+    webSocketClient(QUrl("ws://192.168.1.101:3335")){
     device.setIrLaserDotProjectorBrightness(1000);
 
     depthQueue = device.getOutputQueue("depth", 4, false);
