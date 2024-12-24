@@ -22,7 +22,7 @@ void LogicManager::processSpatialData(const std::vector<dai::SpatialLocations>& 
         int col = static_cast<int>(data.config.roi.topLeft().x * GRID_SIZE);
         int row = static_cast<int>(data.config.roi.topLeft().y * GRID_SIZE);
 
-        if (distance / 1000.0f < 1.0f) {
+        if (distance / 2000.0f < 1.0f) {
             grid[row][col]++;
         }
     }
@@ -31,7 +31,7 @@ void LogicManager::processSpatialData(const std::vector<dai::SpatialLocations>& 
 std::string LogicManager::decideAction() const {
     int leftDanger = 0, rightDanger = 0, topDanger = 0, bottomDanger = 0;
     int leftSafe = 0, rightSafe = 0, topSafe = 0, bottomSafe = 0;
-    int centerSum = 0; // Tổng của vùng trung tâm 3x3
+    int centerSum = 0; // Tổng của vùng trung tâm 4x4
     int total = 0;
 
     for (int i = 0; i < GRID_SIZE; i++) {
@@ -42,7 +42,7 @@ std::string LogicManager::decideAction() const {
 
 
             // Xác định vùng trung tâm 3x3
-            if (i >= 1 && i <= 3 && j >= 1 && j <= 3) {
+            if (i >= 3 && i <= 6 && j >= 2 && j <= 7) {
                 centerSum += grid[i][j];
             }
 

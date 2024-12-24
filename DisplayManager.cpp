@@ -36,14 +36,14 @@ void DisplayManager::drawROIs(cv::Mat& frame, const std::vector<dai::SpatialLoca
     for (const auto& data : spatialData) {
         auto roi = data.config.roi.denormalize(frame.cols, frame.rows);
         auto coords = data.spatialCoordinates;
-        float distance = std::sqrt(coords.x * coords.x + coords.y * coords.y + coords.z * coords.z);
+        float distance = coords.z;
 
         int xmin = static_cast<int>(roi.topLeft().x);
         int ymin = static_cast<int>(roi.topLeft().y);
         int xmax = static_cast<int>(roi.bottomRight().x);
         int ymax = static_cast<int>(roi.bottomRight().y);
 
-        cv::Scalar color = (distance / 1000.0f < 1.0f) ? cv::Scalar(0, 0, 255) : cv::Scalar(0, 255, 0);
+        cv::Scalar color = (distance / 2000.0f < 1.0f) ? cv::Scalar(0, 0, 255) : cv::Scalar(0, 255, 0);
         cv::rectangle(frame, cv::Rect(cv::Point(xmin, ymin), cv::Point(xmax, ymax)), color, 2);
     }
 }

@@ -42,7 +42,7 @@ void PipelineManager::configureNodes(){
     xinSpatialCalcConfig->out.link(spatialLocationCalculator->inputConfig);
 
     // Add 25 ROIs (5x5 grid)
-    static constexpr int GRID_SIZE = 5;
+    static constexpr int GRID_SIZE = 10;
     for (int i = 0; i < GRID_SIZE; i++) {
         for (int j = 0; j < GRID_SIZE; j++) {
             dai::SpatialLocationCalculatorConfigData config;
@@ -50,8 +50,8 @@ void PipelineManager::configureNodes(){
             config.depthThresholds.upperThreshold = 30000;
             config.calculationAlgorithm = dai::SpatialLocationCalculatorAlgorithm::MEDIAN;
             config.roi = dai::Rect(
-                dai::Point2f(i * 0.2f, j * 0.2f),
-                dai::Point2f((i + 1) * 0.2f, (j + 1) * 0.2f)
+                dai::Point2f(i * 0.1f, j * 0.1f),
+                dai::Point2f((i + 1) * 0.1f, (j + 1) * 0.1f)
                 );
             spatialLocationCalculator->initialConfig.addROI(config);
         }

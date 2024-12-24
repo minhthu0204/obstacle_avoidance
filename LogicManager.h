@@ -9,7 +9,7 @@
 
 class LogicManager {
 private:
-    static constexpr int GRID_SIZE = 5;
+    static constexpr int GRID_SIZE = 10;
     std::vector<std::vector<int>> grid;
 
     void resetGrid();
