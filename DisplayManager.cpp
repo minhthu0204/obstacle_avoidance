@@ -57,7 +57,8 @@ void DisplayManager::logDistanceGrid() {
     const auto& distanceGrid = logicManager.getDistanceGrid(); // Lấy distanceGrid từ LogicManager
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
-            std::cout << distanceGrid[i][j] << " ";  // In giá trị của mỗi ô trong ma trận
+            float distanceInMeters = distanceGrid[i][j] / 1000.0f;
+            std::cout << std::fixed << std::setprecision(1) << distanceInMeters << " ";  // In giá trị của mỗi ô trong ma trận
         }
         std::cout << std::endl;  // In dòng mới sau khi hoàn thành một hàng
     }
