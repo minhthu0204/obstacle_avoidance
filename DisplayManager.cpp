@@ -55,13 +55,16 @@ void DisplayManager::drawROIs(cv::Mat& frame, const std::vector<dai::SpatialLoca
 void DisplayManager::logDistanceGrid() {
     // Log the distanceGrid (from LogicManager)
     const auto& distanceGrid = logicManager.getDistanceGrid(); // Lấy distanceGrid từ LogicManager
+    std::cout << "[10x10]" << std::endl; // In ra chỉ dẫn về kích thước ma trận
     for (int i = 0; i < 10; i++) {
+        std::cout << "[ "; // Bắt đầu mỗi dòng với dấu [
         for (int j = 0; j < 10; j++) {
             float distanceInMeters = distanceGrid[i][j] / 1000.0f;
             std::cout << std::fixed << std::setprecision(1) << distanceInMeters << " ";  // In giá trị của mỗi ô trong ma trận
         }
-        std::cout << std::endl;  // In dòng mới sau khi hoàn thành một hàng
+        std::cout << "]"  << std::endl;  // In dòng mới sau khi hoàn thành một hàng
     }
+    std::cout << std::endl; // In một dòng trống giữa các ma trận
 }
 
 void DisplayManager::run() {
