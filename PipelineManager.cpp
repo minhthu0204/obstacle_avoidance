@@ -41,7 +41,7 @@ void PipelineManager::configureNodes(){
     spatialLocationCalculator->out.link(xoutSpatialData->input);
     xinSpatialCalcConfig->out.link(spatialLocationCalculator->inputConfig);
 
-    // Add 25 ROIs (5x5 grid)
+    // Add 100 ROIs (10x10 grid)
     static constexpr int GRID_SIZE = 10;
     for (int i = 0; i < GRID_SIZE; i++) {
         for (int j = 0; j < GRID_SIZE; j++) {

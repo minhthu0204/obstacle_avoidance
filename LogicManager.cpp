@@ -17,8 +17,8 @@ void LogicManager::processSpatialData(const std::vector<dai::SpatialLocations>& 
     resetGrid();
     for (const auto& data : spatialData) {
         auto coords = data.spatialCoordinates;
-        float distance = std::sqrt(coords.x * coords.x + coords.y * coords.y + coords.z * coords.z);
-
+        //float distance = std::sqrt(coords.x * coords.x + coords.y * coords.y + coords.z * coords.z);
+        float distance = coords.z;
         int col = static_cast<int>(data.config.roi.topLeft().x * GRID_SIZE);
         int row = static_cast<int>(data.config.roi.topLeft().y * GRID_SIZE);
 
