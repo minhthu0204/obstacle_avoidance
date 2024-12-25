@@ -20,6 +20,7 @@ public:
     LogicManager();
     void processSpatialData(const std::vector<dai::SpatialLocations>& spatialData, int frameWidth, int frameHeight);
     std::string decideAction() const;
+    const std::vector<std::vector<float>>& getDistanceGrid() const;  // Getter để truy cập distanceGrid
 };
 
 #endif
