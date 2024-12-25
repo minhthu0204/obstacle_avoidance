@@ -1,6 +1,7 @@
 #include "LogicManager.h"
 
-LogicManager::LogicManager(): grid(GRID_SIZE, std::vector<int>(GRID_SIZE, 0))
+LogicManager::LogicManager(): grid(GRID_SIZE, std::vector<int>(GRID_SIZE, 0)),
+    distanceGrid(GRID_SIZE, std::vector<float>(GRID_SIZE, 0.0f))
 {
 
 }
@@ -10,6 +11,12 @@ LogicManager::LogicManager(): grid(GRID_SIZE, std::vector<int>(GRID_SIZE, 0))
 void LogicManager::resetGrid() {
     for (auto& row : grid) {
         std::fill(row.begin(), row.end(), 0);
+    }
+}
+
+void LogicManager::resetDistanceGrid() {
+    for (auto& row : distanceGrid) {
+        std::fill(row.begin(), row.end(), 0.0f);  // Đặt tất cả giá trị distance về 0
     }
 }
 
@@ -25,6 +32,10 @@ void LogicManager::processSpatialData(const std::vector<dai::SpatialLocations>& 
         if (distance / 2000.0f < 1.0f) {
             grid[row][col]++;
         }
+
+
+        // Lưu giá trị distance vào distanceGrid
+        distanceGrid[row][col] = distance;
     }
 }
 
@@ -67,4 +78,8 @@ std::string LogicManager::decideAction() const {
     else return "787001;0.1";
 
     //return "787001;0.2";
+}
+
+const std::vector<std::vector<float>>& LogicManager::getDistanceGrid() const {
+    return distanceGrid;  // Trả về ma trận distanceGrid
 }

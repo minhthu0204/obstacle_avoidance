@@ -11,7 +11,9 @@ class LogicManager {
 private:
     static constexpr int GRID_SIZE = 10;
     std::vector<std::vector<int>> grid;
+    std::vector<std::vector<float>> distanceGrid;     // Ma trận lưu trữ các giá trị distance
 
+    void resetDistanceGrid();
     void resetGrid();
 
 public:

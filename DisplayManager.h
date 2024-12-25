@@ -18,6 +18,7 @@ private:
 
     void processFrame();
     void drawROIs(cv::Mat& frame, const std::vector<dai::SpatialLocations>& spatialData);
+    void logDistanceGrid();  // Thêm phương thức để log ma trận distanceGrid
 
 public:
     DisplayManager();

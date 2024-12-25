@@ -28,6 +28,9 @@ void DisplayManager::processFrame() {
     //std::cout << "Action: " << action << std::endl;
     QByteArray dataBuffer = QString::fromStdString(action).toUtf8();
     webSocketClient.sendMessage(dataBuffer);
+
+    // Log the distanceGrid
+    logDistanceGrid();
     // Show the frame
     cv::imshow("depth", depthFrameColor);
 }
@@ -45,6 +48,18 @@ void DisplayManager::drawROIs(cv::Mat& frame, const std::vector<dai::SpatialLoca
 
         cv::Scalar color = (distance / 2000.0f < 1.0f) ? cv::Scalar(0, 0, 255) : cv::Scalar(0, 255, 0);
         cv::rectangle(frame, cv::Rect(cv::Point(xmin, ymin), cv::Point(xmax, ymax)), color, 2);
+    }
+}
+
+
+void DisplayManager::logDistanceGrid() {
+    // Log the distanceGrid (from LogicManager)
+    const auto& distanceGrid = logicManager.getDistanceGrid(); // Lấy distanceGrid từ LogicManager
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
+            std::cout << distanceGrid[i][j] << " ";  // In giá trị của mỗi ô trong ma trận
+        }
+        std::cout << std::endl;  // In dòng mới sau khi hoàn thành một hàng
     }
 }
 
